@@ -1,0 +1,36 @@
+@import '../App/vars.scss';
+
+#composer {
+  height: 12rem;
+
+  .input {
+    align-items: center;
+    align-content: center;
+    display: flex;
+    width: 100%;
+
+    .compose-input {
+      color: $med-gray;
+      font-size: 2rem;
+      font-weight: bold;
+      height: 4rem;
+      margin: 2rem 0 0 2rem;
+      width: 80%;
+
+      &::-webkit-input-placeholder {
+        color: #ccc;
+      }
+    }
+
+    .msg-submit {
+      -webkit-appearance: none;
+      border: none;
+      color: #0000ff;
+      font-size: 2.5rem;
+      font-weight: bold;
+      height: 4rem;
+      margin: 0 0 0 1rem;
+      padding: 1.8rem .5rem;
+    }
+  }
+}

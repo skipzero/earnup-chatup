@@ -1,0 +1,43 @@
+@import '../App/vars.scss';
+
+#stage {
+  background-color: #ebeeef;
+  box-shadow: 0px 4px 2px 1px rgba(56, 56, 56, .2) inset;
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  margin: 0;
+  overflow-y: scroll;
+  padding: 0;
+  width: 100%;
+
+  li {
+    list-style: none;
+    padding: 2rem;
+
+    .author {
+      color: #aaa;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .sent {
+      background-color: $base-green;
+      color: #fff;
+      text-align: right;
+    }
+
+  }
+
+  .message {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(79, 82, 177, 0.35);
+    display: inline-block;
+    font-size: 3rem;
+    margin: 2rem 0 2rem 2.5rem;
+    max-width: 55%;
+    padding: 1rem;
+  }
+
+}

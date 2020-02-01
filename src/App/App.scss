@@ -1,0 +1,41 @@
+@import 'vars.scss';
+
+html,
+body {
+  font-size: 10px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+
+  #app,
+  #login {
+    height: 100%;
+
+    .login-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+
+      input {
+        font-size: 2.5rem;
+        font-weight: bold;
+        width: 40rem;
+        margin: 10px auto;
+        padding: .8rem;
+
+        &[type=submit] {
+          background-color: #d40019;
+          color: #ffffff;
+          padding: 1.2rem 1.8rem;
+          width: 42rem;
+        }
+      }
+    }
+  }
+}
