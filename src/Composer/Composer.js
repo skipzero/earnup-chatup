@@ -5,8 +5,11 @@ function Composer(props) {
   const { newMessage } = props;
   const [messageValue, setMessageValue] = useState('');
 
-  const sendMessage = async (msg) => {
-    newMessage(msg);
+  const sendMessage = async () => {
+    const input = document.querySelector('.msg-submit');
+    console.log('SUBMIT::', input)
+    await newMessage(messageValue);
+    setMessageValue('');
   }
 
 
@@ -23,7 +26,7 @@ function Composer(props) {
         type='submit'
         className='msg-submit'
         onClick={() => {
-          sendMessage(messageValue);
+          sendMessage();
         }}
       >Send</button>
     </div>

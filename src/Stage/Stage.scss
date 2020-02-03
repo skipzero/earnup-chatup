@@ -11,33 +11,43 @@
   padding: 0;
   width: 100%;
 
-  li {
+  li.message-wrapper  {
+    display: flex;
     list-style: none;
     padding: 2rem;
+
+    &.sent {
+      flex-direction: row-reverse;
+      text-align: right;
+
+      .message {
+        background-color: $base-green;
+        color: #fff;
+      }
+    }
 
     .author {
       color: #aaa;
       font-size: 2rem;
       font-weight: bold;
+      width: 100%
     }
 
-    .sent {
-      background-color: $base-green;
-      color: #fff;
-      text-align: right;
+    .message {
+      background-color: #ffffff;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 25px rgba(79, 82, 177, 0.35);
+      display: inline-block;
+      font-size: 3rem;
+      margin: 2rem 0 2rem 2.5rem;
+      padding: 1rem;
+      width: 50rem;
     }
 
+    .name {
+      color: $drk-gray;
+      font-size: 1.8rem;
+      padding-left: 1rem;
+    }
   }
-
-  .message {
-    background-color: #ffffff;
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 25px rgba(79, 82, 177, 0.35);
-    display: inline-block;
-    font-size: 3rem;
-    margin: 2rem 0 2rem 2.5rem;
-    max-width: 55%;
-    padding: 1rem;
-  }
-
 }

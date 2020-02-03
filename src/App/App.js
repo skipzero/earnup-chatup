@@ -1,59 +1,134 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
+
+import axios from 'axios';
+import io from 'socket.io-client';
+
 import Composer from '../Composer';
 import Stage from '../Stage';
 import './App.scss';
 
 const shortId = require('shortid');
-const defaultProps = {
-  message: '',
-  name: '',
-  id: '',
-}
 
-function App(props = defaultProps) {
-  const msgStorage = window.localStorage;
-
-  const [messagePayload, setMessagePayload] = useState(defaultProps);
-  const [msgList, setMessageList] = useState([]);
-
-  const getMessages = () => {
-    const msgArray = msgStorage.getItem('messageList');
-    setMessageList(JSON.parse(msgArray));
-  }
-
-  const setMessages = () => {
-    msgList.push(messagePayload);
-    const tempStr = JSON.stringify(msgList);
-    msgStorage.setItem('messageList', tempStr);
-  }
-
-  // We're using local storage initially to hold our messages for retrieval by another user (in same browser)
-  // TODO: Replace local storage with a real backend? possibly socketIO?
-  function handlePostMessage(msg) {
-    getMessages();
-    setMessagePayload({
-      message: msg,
-      name: name,
-      id: shortId.generate(),
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.submitUserName = this.submitUserName.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      msgList: [],
+      uName: '',
+      msg: '',
+      url: '/api/messages',
+    }
+    this.socket = io('localhost:3001');
+    this.socket.on('RECEIVE_MESSAGE', (data) => {
+      addMessage(data);
     });
-    setMessages();
+
+    const addMessage = data => {
+      console.log(data);
+      this.setState({
+        msgList: [...this.state.msgList, data]
+      });
+      console.log(this.state.msgList);
+    };
+
+    this.sendMessage = ev => {
+      ev.preventDefault();
+      this.socket.emit('SEND_MESSAGE', {
+        name: this.state.uName,
+        message: this.state.msg,
+        id: shortId.generate(),
+      })
+      this.setState({ message: '' });
+
+    }
   }
 
-  const messages = msgList;
-  const { name } = props;
-  return (
-    <div id="app">
-      <Stage
-        name={name}
-        messages={messages}
-      />
-      <Composer
-        name={name}
-        newMessage={(msg, name) => {
-          handlePostMessage(msg);
-        }} />
-    </div>
-  );
+  componentWillMount() {
+    this.getMessages();
+  }
+
+  submitUserName(e) {
+    e.preventDefault();
+    const input = document.querySelector('input.name-input');
+    console.log('user submit:', input)
+    this.setState({
+      uName: input.value,
+    })
+  }
+
+  async getMessages() {
+    const { url } = this.state;
+    await axios.get(url)
+      .then(d => {
+        console.log('DATA::', d)
+        this.setState({
+          msgList: d.data,
+        });
+      })
+  }
+
+  handleChange(e) {
+    e.preventDefault();
+    console.log('On Change:::', e.target.value)
+    const input = e.target.value;
+    this.setState({ [e.target.name]: input });
+  }
+
+  async handlePostMessage(msg) {
+    const { uName, url } = this.state;
+    const payload = {
+      name: uName,
+      message: msg,
+      id: shortId.generate(),
+    }
+    this.socket.emit('SEND_MESSAGE', payload);
+    this.setState(payload)
+
+    await axios.post(url, payload)
+      .then(this.getMessages());
+  }
+
+  render() {
+    const { msgList, uName } = this.state;
+    return <>
+      {
+        !uName ?
+          (
+            <div id="login" >
+              <div className="login-wrapper">
+                <input type='text'
+                  placeholder='Type your username...'
+                  onChange={this.handleChange}
+                  className='name-input'
+                />
+                <input
+                  type='submit'
+                  value='Join Chat!'
+                  onClick={(name) => {
+                    this.submitUserName(name)
+                  }}
+                  className='btn btn-submit login'
+                />
+              </div>
+            </div>
+          ) : (
+            <div id="app">
+              <Stage
+                uName={uName}
+                messages={msgList}
+              />
+              <Composer
+                name={uName}
+                newMessage={(msg, name) => {
+                  this.handlePostMessage(msg);
+                }} />
+            </div>
+          )
+      }
+    </>
+  }
 }
 
 export default App;

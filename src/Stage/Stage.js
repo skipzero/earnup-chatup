@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import './Stage.scss';
 
 function Stage(props) {
-  const { messages, name } = props;
+  const { messages, uName } = props;
+  console.log("Stage", props)
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
     messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -11,12 +12,18 @@ function Stage(props) {
 
   return <div id='stage'>
     {messages.map((msg) => {
-      let classList = msg.name === name ? 'message sent' : 'message';
-      return <li key={msg.id} >
-        <div className={classList}>
-          {msg.message}
+      const { name, message } = msg;
+      console.log('MSG::', msg)
+      let classList = name === uName ? 'message-wrapper sent' : 'message-wrapper';
+      return <li key={msg.id} className={classList}>
+        <div className='col'>
+          <div className='message'>
+            {message}
+          </div>
+          <div className='name'>
+            {name}
+          </div>
         </div>
-        {msg.name}
       </li>
     })}
     <div ref={messagesEndRef} />

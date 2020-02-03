@@ -1,7 +1,8 @@
 @import '../App/vars.scss';
 
 #composer {
-  height: 12rem;
+  border-top:3px solid $base-green;
+  height: 10%;
 
   .input {
     align-items: center;
@@ -10,7 +11,7 @@
     width: 100%;
 
     .compose-input {
-      color: $med-gray;
+      color: $drk-gray;
       font-size: 2rem;
       font-weight: bold;
       height: 4rem;
@@ -18,7 +19,7 @@
       width: 80%;
 
       &::-webkit-input-placeholder {
-        color: #ccc;
+        color: #666;
       }
     }
 
