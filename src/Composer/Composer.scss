@@ -1,7 +1,7 @@
 @import '../App/vars.scss';
 
 #composer {
-  border-top:3px solid tint($base-green, 40%);
+  border-top:3px solid tint($base-green, 60%);
   height: 10%;
 
   .input {
@@ -11,28 +11,38 @@
     padding-top: 2rem;
     width: 100%;
 
-    .compose-input {
-      color: $drk-gray;;
-      font-size: 2rem;
-      font-weight: bold;
-      height: 4rem;
-      margin-left: 2rem;
-      width: 60%;
+    form {
+      width: 100%;
 
-      &::-webkit-input-placeholder {
-        color: $med-gray;
+      .compose-input {
+        border: 1px solid tint($base-green, 65%);
+        color: $drk-gray;;
+        font-size: 2rem;
+        font-weight: bold;
+        height: 4rem;
+        margin-left: 2rem;
+        width: 60%;
+
+        &::-webkit-input-placeholder {
+          color: $med-gray;
+          padding-left: 1rem;
+        }
+
+        & div {
+          padding-left: 2rem;
+        }
       }
-    }
 
-    .msg-submit {
-      -webkit-appearance: none;
-      border: 1px solid $base-green;
-      color: $base-green;
-      font-size: 2.5rem;
-      font-weight: bold;
-      height: 4rem;
-      margin-left: 2rem;
-      padding: .7rem;
+      .msg-submit {
+        -webkit-appearance: none;
+        border: 1px solid tint($base-green, 35%);
+        color: $base-green;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-left: 2rem;
+        padding: .7rem;
+
+      }
     }
   }
 }
