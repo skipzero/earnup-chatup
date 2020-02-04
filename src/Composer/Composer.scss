@@ -1,37 +1,38 @@
 @import '../App/vars.scss';
 
 #composer {
-  border-top:3px solid $base-green;
+  border-top:3px solid tint($base-green, 40%);
   height: 10%;
 
   .input {
     align-items: center;
     align-content: center;
     display: flex;
+    padding-top: 2rem;
     width: 100%;
 
     .compose-input {
-      color: $drk-gray;
+      color: $drk-gray;;
       font-size: 2rem;
       font-weight: bold;
       height: 4rem;
-      margin: 2rem 0 0 2rem;
-      width: 80%;
+      margin-left: 2rem;
+      width: 60%;
 
       &::-webkit-input-placeholder {
-        color: #666;
+        color: $med-gray;
       }
     }
 
     .msg-submit {
       -webkit-appearance: none;
-      border: none;
-      color: #0000ff;
+      border: 1px solid $base-green;
+      color: $base-green;
       font-size: 2.5rem;
       font-weight: bold;
       height: 4rem;
-      margin: 0 0 0 1rem;
-      padding: 1.8rem .5rem;
+      margin-left: 2rem;
+      padding: .7rem;
     }
   }
 }

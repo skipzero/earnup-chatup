@@ -5,6 +5,7 @@ const sequelize = new Sequelize({
   storage: './database.sqlite3'
 });
 
+// our model for messages, sequelize then inserted in our DB.
 class Messages extends Sequelize.Model { }
 Messages.init(
   {

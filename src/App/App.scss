@@ -18,23 +18,33 @@ body {
     height: 100%;
 
     .login-wrapper {
-      display: flex;
-      flex-direction: column;
       height: 100%;
-      justify-content: center;
 
-      input {
-        font-size: 2.5rem;
-        font-weight: bold;
-        width: 40rem;
-        margin: 10px auto;
-        padding: .8rem;
+      form {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
 
-        &[type=submit] {
-          background-color: #d40019;
-          color: #ffffff;
-          padding: 1.2rem 1.8rem;
-          width: 42rem;
+
+        input {
+          color: $drk-gray;
+          font-size: 2.5rem;
+          font-weight: bold;
+          width: 40rem;
+          margin: 10px auto;
+          padding: .8rem;
+
+          &[type=submit] {
+            background-color: $base-green;
+            color: #ffffff;
+            padding: 1.2rem 1.8rem;
+            width: 42rem;
+          }
+          &::-webkit-input-placeholder {
+            color: $drk-gray;
+          }
         }
       }
     }

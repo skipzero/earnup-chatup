@@ -1,4 +1,11 @@
 
 $base-green: #00AB61;
+$lt-green: tint($base-green, 40%);
 $med-gray: #cccccc;
 $drk-gray: #777777;
+
+
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
