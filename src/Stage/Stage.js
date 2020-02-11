@@ -14,13 +14,13 @@ function Stage(props) {
 
   return <div id='stage'>
     {messages.map((msg) => {
-      const { name, message } = msg;
+      const { name, message, myMessage } = msg;
 
       if (message === '') { // get rid of any empty messages
         return null;
       }
 
-      let classList = name === uName ? 'message-wrapper sent' : 'message-wrapper';
+      let classList = myMessage ? 'message-wrapper sent' : 'message-wrapper';
       return <li key={msg.id} className={classList}>
         <div className='col'>
           <div className='message'>

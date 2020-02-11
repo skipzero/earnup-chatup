@@ -10,23 +10,27 @@ async function seed() {
   await Promise.all([
     Messages.create({
       name: 'bigSmiles99',
-      message: 'this is a message for the others... watch out for the bump.',
+      message: 'Who\'s on first?',
       id: 'ck8RVv7S',
+      myMessage: false,
     }),
     Messages.create({
       name: 'forty9er-138',
-      message: 'what bump? I don\'t see a bump!',
+      message: 'who?',
       id: 'efZ_g5LX',
+      myMessage: false,
     }),
     Messages.create({
       name: 'MarcOly',
-      message: 'OI! that bump. The one in the road!',
+      message: 'that\'s right, who IS on first',
       id: 'UHpe_d_K',
+      myMessage: false,
     }),
     Messages.create({
       name: 'gringo',
-      message: 'that\'s not a bump, that\'s a hill. ',
+      message: 'I don\'t know is on second',
       id: 'hxZMF6qr',
+      myMessage: false,
     })
   ]);
 }

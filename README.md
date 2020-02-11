@@ -9,18 +9,22 @@ currently the user name initially entered is saved to local storage. if you wish
 #### Available Scripts
 - after you've cloned or somehow downloaded the repo, run yarn or npm install for dependancies.
 
-    `$ yarn` || `$ npm i`
-
-- initial run of app requires seeding DB. to do this run:
-
-    `$ yarn seed` || `$ npm run seed`
+      `$ yarn` || `$ npm i` (`$ npm install`)
 
 - then you're set to run the application! Super simple to run the dev version.
 
-    `$ yarn start` || `$ npm start`
+      `$ yarn start` || `$ npm start`
 
-- Runs the app in the development mode, as well as the backend server for the DB and API.
+- Seeds the DB, runs the app in the development mode, as well as the backend server for the DB and API.
+
+- ~initial run of app requires seeding DB. to do this run:~
+
+    ~`$ yarn seed` || `$ npm run seed`~
+
+    *1*The seeding of the DB is now incorporated in the start script.**
 
 - if the browser doesn't automatically open, go to [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+- if you can't post a message, make sure the database was created. it'll live in the root of the project folder for ease of development.
 
 (This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).)

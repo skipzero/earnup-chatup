@@ -23,6 +23,10 @@ Messages.init(
       allowNull: false,
       primaryKey: true,
     },
+    myMessage: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+    }
   },
   {
     sequelize,

@@ -5,9 +5,10 @@ import './Composer.scss';
 function Composer(props) {
   const { newMessage } = props;
   const [messageValue, setMessageValue] = useState('');
+  const [myMessage, setMyMessage] = useState(false);
 
   const sendMessage = async () => {
-    await newMessage(messageValue); // pass message to App to handle posting to server
+    await newMessage(messageValue, myMessage); // pass message to App to handle posting to server
     setMessageValue(''); // reset the message input field
   }
 
@@ -27,6 +28,7 @@ function Composer(props) {
           type='submit'
           className='msg-submit'
           onClick={() => {
+            setMyMessage(true);
             sendMessage();
           }}
         >Send</button>

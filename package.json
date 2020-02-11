@@ -20,7 +20,8 @@
     "sqlite3": "^4.1.1"
   },
   "scripts": {
-    "start": "concurrently \"yarn server\" \"yarn client\"",
+    "start": "concurrently \"yarn seed\" \"yarn dev\"",
+    "dev": "concurrently \"yarn server\" \"yarn client\" ",
     "client": "react-scripts start",
     "server": "nodemon ./backend/server.js",
     "seed": "node ./backend/seedDB.js",

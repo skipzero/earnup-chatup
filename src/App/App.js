@@ -87,10 +87,10 @@ class App extends Component {
   }
 
   // posts our message to server using our API.
-  async handlePostMessage(msg) {
+  async handlePostMessage(msg, myMess) {
     // check for empties and return early in the event we have any
     if (msg === '') {
-      console.error('ERROR: NNo empty messages allowed') // TODO: surface warning to user
+      console.error('ERROR: No empty messages allowed') // TODO: surface warning to user
       return null;
     }
     const { uName, url } = this.state;
@@ -98,6 +98,7 @@ class App extends Component {
       name: uName,
       message: msg,
       id: shortId.generate(),
+      myMessage: true,
     }
     // post our message to server and reload our messages with new one included.
     await axios.post(url, payload)
