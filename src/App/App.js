@@ -81,7 +81,6 @@ class App extends Component {
   // our onChange handler updates state when a change in our input
   handleChange(e) {
     e.preventDefault();
-    console.log('On Change:::', e.target)
     const input = e.target.value;
     this.setState({ [e.target.name]: input });
   }
@@ -121,7 +120,6 @@ class App extends Component {
                     placeholder='Type your username...'
                     onKeyDown={(e) => {
                       if (e.code === 'Enter') {
-                        console.log('Keydown', e)
                         this.submitUserName(e.target.value)
                       }
                     }}
